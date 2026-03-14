@@ -20,10 +20,25 @@ async function checkUser() {
 
 // 3. 登录 & 退出
 async function login() {
-    await _supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: { redirectTo: window.location.href }
-    })
+    //await _supabase.auth.signInWithOAuth({
+    //    provider: 'google',
+    //    options: { redirectTo: window.location.href }
+    //})
+    try {
+        const { data, error } = await _supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: { 
+                redirectTo: window.location.origin // 自动获取当前域名
+            }
+        });
+        
+        if (error) {
+            console.error("登录重定向失败:", error.message);
+            alert("登录失败: " + error.message);
+        }
+    } catch (err) {
+        console.error("意外错误:", err);
+    }
 }
 
 async function logout() {
