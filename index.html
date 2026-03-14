@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo V2 - Gmail Auth</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body { font-family: sans-serif; max-width: 500px; margin: 50px auto; text-align: center; }
+        .hidden { display: none; }
+        ul { list-style: none; padding: 0; }
+        li { background: #eee; margin: 5px 0; padding: 10px; display: flex; justify-content: space-between; }
+    </style>
+</head>
+<body>
+    <h2>我的待办清单 V2 (认证版)</h2>
+
+    <div id="auth-section">
+        <button onclick="login()">使用 Google 账号登录</button>
+    </div>
+
+    <div id="todo-section" class="hidden">
+        <p>欢迎, <span id="user-email"></span>! <button onclick="logout()">退出</button></p>
+        <input type="text" id="taskInput" placeholder="输入新任务...">
+        <button onclick="addTodo()">添加</button>
+        <ul id="todoList"></ul>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
